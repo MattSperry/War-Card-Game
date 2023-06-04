@@ -8,14 +8,67 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var playerCard = "card7"
+    var cpuCard = "card13"
+    
+    var playerScore = 0
+    var cpuScore = 0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        ZStack{
+            Image("background-wood-grain")
+                .resizable()
+                .ignoresSafeArea()
+            VStack {
+                Spacer()
+                Image("logo")
+                Spacer()
+                HStack{
+                    Spacer()
+                    Image(playerCard)
+                    Spacer()
+                    Image(cpuCard)
+                    Spacer()
+                }
+                Spacer()
+                
+                Button {
+                    deal()
+                } label: {
+                    Image("button")
+                }
+
+                
+                Spacer()
+                HStack{
+                    Spacer()
+                    VStack{
+                        Text("Player")
+                            .font(.headline)
+                            .padding(.bottom, 10.0)
+                        Text(String(playerScore))
+                            .font(.largeTitle)
+                    }
+                    Spacer()
+                    VStack{
+                        Text("CPU")
+                            .font(.headline)
+                            .padding(.bottom, 10.0)
+                        Text(String(cpuScore))
+                            .font(.largeTitle)
+                    }
+                    Spacer()
+                }
+                .foregroundColor(.white)
+                Spacer()
+            }
         }
-        .padding()
+    }
+    
+    func deal(){
+        print("Deal Cards")
     }
 }
 
