@@ -15,7 +15,7 @@ struct ContentView: View {
     @State var playerScore = 0
     @State var cpuScore = 0
     
-    @State var result = ""
+    @State var resultText = ""
     
     var body: some View {
         
@@ -42,7 +42,7 @@ struct ContentView: View {
                     Image("button")
                 }
 
-                Text(result)
+                Text(resultText)
                     .font(.headline)
                     .foregroundColor(.white)
                 Spacer()
@@ -82,14 +82,14 @@ struct ContentView: View {
         if playerCardValue > cpuCardValue {
             //player wins
             playerScore += 1
-            result = "Player wins round"
+            resultText = "Player wins round"
         } else if playerCardValue < cpuCardValue {
             //cpu wins
             cpuScore += 1
-            result = "CPU wins round"
+            resultText = "CPU wins round"
         } else {
             //tie
-            result = "Tie, no score change"
+            resultText = "Tie, no score change"
         }
     }
 }
