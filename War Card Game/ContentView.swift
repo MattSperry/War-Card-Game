@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    // @State shows that the variable powers the visual state
+    @State var playerCard = "back"
+    @State var cpuCard = "back"
     
-    var playerCard = "card7"
-    var cpuCard = "card13"
-    
-    var playerScore = 0
-    var cpuScore = 0
+    @State var playerScore = 0
+    @State var cpuScore = 0
     
     var body: some View {
         
@@ -68,7 +68,22 @@ struct ContentView: View {
     }
     
     func deal(){
-        print("Deal Cards")
+        // Randomize the players card
+        var playerCardValue = Int.random(in: 2...14)
+        playerCard = "card" + String(playerCardValue)
+        // Randomize the cpus card
+        var cpuCardValue = Int.random(in: 2...14)
+        cpuCard = "card" + String(cpuCardValue)
+        // Update the score
+        if playerCardValue > cpuCardValue {
+            //player wins
+            playerScore += 1
+        } else if playerCardValue < cpuCardValue {
+            //cpu wins
+            cpuScore += 1
+        } else {
+            //tie
+        }
     }
 }
 
